@@ -10,7 +10,7 @@
     <Grid>
         <StackLayout>
             <Label Text="{Binding Message}" />
-            <ScrollView x:Name="scrollView" Scrolled="scrollView_Scrolled">
+            <ScrollView x:Name="scrollView" Scrolled="ScrollView_Scrolled">
                 <StackLayout>
                     <BoxView BackgroundColor="Pink" HeightRequest="300" />
                     <BoxView BackgroundColor="LightBlue" HeightRequest="200" />
