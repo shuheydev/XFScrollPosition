@@ -6,25 +6,10 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
-    <Grid>
+    <ContentPage.Content>
         <StackLayout>
-            <Label Text="{Binding Message}" />
-            <ScrollView x:Name="scrollView" Scrolled="ScrollView_Scrolled">
-                <StackLayout>
-                    <BoxView BackgroundColor="Pink" HeightRequest="300" />
-                    <BoxView BackgroundColor="LightBlue" HeightRequest="200" />
-                    <BoxView BackgroundColor="LightGreen" HeightRequest="250" />
-                    <BoxView BackgroundColor="LightYellow" HeightRequest="400" />
-                </StackLayout>
-            </ScrollView>
+            <Button Clicked="Button_Clicked" Text="Fade In/Out Header" />
+
         </StackLayout>
-        <BoxView
-            x:Name="boxView_Header"
-            BackgroundColor="Aqua"
-            HeightRequest="50"
-            VerticalOptions="Start" />
-
-    </Grid>
-
+    </ContentPage.Content>
 </ContentPage>
