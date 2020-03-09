@@ -20,11 +20,14 @@
                 </StackLayout>
             </ScrollView>
         </StackLayout>
-        <BoxView
-            x:Name="boxView_Header"
+        <Frame
+            x:Name="frame_Header"
+            Padding="0"
             BackgroundColor="Aqua"
             HeightRequest="50"
-            VerticalOptions="Start" />
+            VerticalOptions="Start">
+            <Label Text="Header" />
+        </Frame>
 
     </Grid>
 

@@ -14,13 +14,16 @@ namespace XFScrollPosition.Views
     public partial class FadeHeader : ContentPage
     {
         private string _message;
-        public string Message { get=>_message;
+        public string Message
+        {
+            get => _message;
             set
             {
                 _message = value;
                 OnPropertyChanged(nameof(Message));
             }
         }
+
         public FadeHeader()
         {
             InitializeComponent();
@@ -28,6 +31,7 @@ namespace XFScrollPosition.Views
             this.BindingContext = this;
 
             Message = scrollView.ScrollY.ToString();
+            frame_Header.Opacity = 0;
         }
 
 
@@ -38,19 +42,19 @@ namespace XFScrollPosition.Views
             await ToggleHeaderVisibility(e.ScrollY);
         }
 
-        private readonly double _headerVisibleYPosition = 100;
+        private readonly double _headerToggleYPosition = 100;
         private readonly uint _animateLength = 200;
-        private bool _isHeaderVisible = true;
+        private bool _isHeaderVisible=false;
         private async Task ToggleHeaderVisibility(double scrollYPosition)
         {
             bool prevHeaderVisible = _isHeaderVisible;
-            if (scrollYPosition > _headerVisibleYPosition)
+            if (scrollYPosition >= _headerToggleYPosition)
             {
-                _isHeaderVisible = false;
+                _isHeaderVisible = true;
             }
             else
             {
-                _isHeaderVisible = true;
+                _isHeaderVisible = false;
             }
 
             if (_isHeaderVisible == prevHeaderVisible)
@@ -60,11 +64,11 @@ namespace XFScrollPosition.Views
 
             if (_isHeaderVisible)
             {
-                await boxView_Header.FadeTo(1.0, _animateLength);
+                await frame_Header.FadeTo(1.0, _animateLength);
             }
             else
             {
-                await boxView_Header.FadeTo(0, _animateLength);
+                await frame_Header.FadeTo(0, _animateLength);
             }
         }
     }
