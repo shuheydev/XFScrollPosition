@@ -9,7 +9,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Button Clicked="Button_Clicked" Text="Fade In/Out Header" />
-
+            <Button Clicked="Button_Clicked_1" Text="Slide In/Out Header" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
