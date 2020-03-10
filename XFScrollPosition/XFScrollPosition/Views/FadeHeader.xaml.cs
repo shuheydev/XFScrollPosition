@@ -42,26 +42,33 @@ namespace XFScrollPosition.Views
             await ToggleHeaderVisibility(e.ScrollY);
         }
 
+        //表示,非表示が切り替わる位置
         private readonly double _headerToggleYPosition = 100;
+        //アニメーションにかける時間.
         private readonly uint _animateLength = 200;
-        private bool _isHeaderVisible=false;
+        //ナビゲーションバーの表示状態を保持
+        private bool _isHeaderVisible = false;
         private async Task ToggleHeaderVisibility(double scrollYPosition)
         {
-            bool prevHeaderVisible = _isHeaderVisible;
+            bool prevIsHeaderVisible = _isHeaderVisible;
             if (scrollYPosition >= _headerToggleYPosition)
             {
+                //指定位置までスクロールアップしたら,ナビゲーションバーを表示するフラグOn
                 _isHeaderVisible = true;
             }
             else
             {
+                //スクロールダウンでフラグOff
                 _isHeaderVisible = false;
             }
 
-            if (_isHeaderVisible == prevHeaderVisible)
+            //指定位置をまたがない場合,アニメーションの必要は無いのでここまで.
+            if (_isHeaderVisible == prevIsHeaderVisible)
             {
                 return;
             }
 
+            //ナビゲーションバーの表示･非表示のアニメーション
             if (_isHeaderVisible)
             {
                 await frame_Header.FadeTo(1.0, _animateLength);

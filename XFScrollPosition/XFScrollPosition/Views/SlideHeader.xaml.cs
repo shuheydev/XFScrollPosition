@@ -32,23 +32,25 @@ namespace XFScrollPosition.Views
         }
 
 
-        private async void ScrollView_Scrolled(object sender, ScrolledEventArgs e)
+        private void ScrollView_Scrolled(object sender, ScrolledEventArgs e)
         {
-            Message = $"Y:{e.ScrollY},TY:{frame_Header.TranslationY},SY:{e.ScrollY},S-T:{e.ScrollY - _slideToggleYPosition}";
+            Message = e.ScrollY.ToString();
 
-            await SlideHeaderProcess(e.ScrollY);
+            SlideHeaderProcess(e.ScrollY);
         }
 
         private readonly double _slideToggleYPosition = 110;
-        private async Task SlideHeaderProcess(double scrollYPosition)
+        private void SlideHeaderProcess(double scrollYPosition)
         {
             if (scrollYPosition >= _slideToggleYPosition)
             {
+                //指定した位置より多くスクロールした分だけ,配置位置から引く
                 frame_Header.TranslationY = frame_Header.Y - (scrollYPosition - _slideToggleYPosition);
             }
             else
             {
-                frame_Header.TranslationY = 0;
+                //素早く動かすと値が飛び飛びになって,もとの位置に戻らないのでここで調整
+                frame_Header.TranslationY =frame_Header.Y;
             }
         }
     }

@@ -19,6 +19,9 @@
     <Compile Update="Views\FadeHeader.xaml.cs">
       <DependentUpon>FadeHeader.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\SlideHeader2.xaml.cs">
+      <DependentUpon>SlideHeader2.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

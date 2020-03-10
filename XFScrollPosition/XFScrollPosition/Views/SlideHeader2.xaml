@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="XFScrollPosition.Views.SlideHeader"
+    x:Class="XFScrollPosition.Views.SlideHeader2"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
@@ -31,5 +31,9 @@
             <Label Text="Header" />
         </Frame>
 
+        <Label
+            HeightRequest="100"
+            Text="{Binding Message}"
+            VerticalOptions="End" />
     </Grid>
 </ContentPage>
