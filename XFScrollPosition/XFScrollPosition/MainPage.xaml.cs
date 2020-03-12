@@ -32,5 +32,15 @@ namespace XFScrollPosition
         {
             Navigation.PushAsync(new SlideHeader2());
         }
+
+        private void Button_Clicked_3(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new SlideHeader3());
+        }
+
+        private void Button_Clicked_4(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new FadeHeader2());
+        }
     }
 }

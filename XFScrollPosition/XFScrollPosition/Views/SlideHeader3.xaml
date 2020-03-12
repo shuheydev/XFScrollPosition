@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XFScrollPosition.Views.SlideHeader3"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <Grid>
+            <ScrollView x:Name="scrollView">
+                <StackLayout>
+                    <!--  ナビゲーションバーの領域を確保  -->
+                    <BoxView HeightRequest="50" />
+                    <!--<Label Text="{Binding Message}" />-->
+                    <Frame BackgroundColor="LightSeaGreen" HeightRequest="60" />
+                    <Frame BackgroundColor="Pink" HeightRequest="300" />
+                    <Frame BackgroundColor="LightBlue" HeightRequest="200" />
+                    <Frame BackgroundColor="LightGreen" HeightRequest="250" />
+                    <Frame BackgroundColor="LightYellow" HeightRequest="400" />
+                </StackLayout>
+            </ScrollView>
+
+            <!--  ナビゲーションバー.StackLayoutと重なる  -->
+            <Frame
+                x:Name="frame_Header"
+                Margin="5,30,5,0"
+                Padding="0"
+                BackgroundColor="Aqua"
+                HeightRequest="50"
+                VerticalOptions="Start">
+                <Label Text="Header" />
+            </Frame>
+
+            <Label
+                HeightRequest="100"
+                Text="{Binding Message}"
+                VerticalOptions="End" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

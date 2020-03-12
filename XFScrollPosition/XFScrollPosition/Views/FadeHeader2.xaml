@@ -1,16 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="XFScrollPosition.Views.FadeHeader"
+    x:Class="XFScrollPosition.Views.FadeHeader2"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
-
     <Grid>
         <StackLayout>
-            <ScrollView x:Name="scrollView" Scrolled="ScrollView_Scrolled">
+            <ScrollView x:Name="scrollView">
                 <StackLayout>
                     <BoxView BackgroundColor="Pink" HeightRequest="300" />
                     <BoxView BackgroundColor="LightBlue" HeightRequest="200" />
@@ -32,5 +31,4 @@
             Text="{Binding Message}"
             VerticalOptions="End" />
     </Grid>
-
 </ContentPage>
