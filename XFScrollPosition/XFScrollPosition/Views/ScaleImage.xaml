@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XFScrollPosition.Views.ScaleImage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+    <Grid>
+        <StackLayout>
+            <ScrollView x:Name="scrollView">
+                <Grid>
+                    <StackLayout>
+                        <Frame BackgroundColor="Pink" HeightRequest="80" />
+                        <Frame BackgroundColor="LightBlue" HeightRequest="200" />
+                        <Frame BackgroundColor="LightGreen" HeightRequest="250" />
+                        <Frame BackgroundColor="LightYellow" HeightRequest="400" />
+                    </StackLayout>
+                    <Frame
+                        x:Name="imageFrame"
+                        AnchorX="0.5"
+                        AnchorY="1"
+                        BackgroundColor="White"
+                        CornerRadius="70"
+                        HeightRequest="30"
+                        HorizontalOptions="Start"
+                        TranslationX="10"
+                        TranslationY="90"
+                        VerticalOptions="Start"
+                        WidthRequest="30" />
+                </Grid>
+            </ScrollView>
+        </StackLayout>
+        <Label
+            BackgroundColor="Red"
+            HeightRequest="100"
+            Text="{Binding Message}"
+            VerticalOptions="End" />
+    </Grid>
+</ContentPage>

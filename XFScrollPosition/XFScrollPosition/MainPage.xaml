@@ -13,6 +13,7 @@
             <Button Clicked="Button_Clicked_1" Text="Slide In/Out Header" />
             <Button Clicked="Button_Clicked_2" Text="Slide In/Out Header2" />
             <Button Clicked="Button_Clicked_3" Text="Slide In/Out Header2 Rx" />
+            <Button Clicked="Button_Clicked_5" Text="Scale Image" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

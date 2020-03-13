@@ -42,5 +42,10 @@ namespace XFScrollPosition
         {
             Navigation.PushAsync(new FadeHeader2());
         }
+
+        private void Button_Clicked_5(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ScaleImage());
+        }
     }
 }
