@@ -51,16 +51,18 @@ namespace XFScrollPosition.Views
         private async Task ToggleHeaderVisibility(double scrollYPosition)
         {
             bool prevIsHeaderVisible = _isHeaderVisible;
-            if (scrollYPosition >= _headerToggleYPosition)
-            {
-                //指定位置までスクロールアップしたら,ナビゲーションバーを表示するフラグOn
-                _isHeaderVisible = true;
-            }
-            else
-            {
-                //スクロールダウンでフラグOff
-                _isHeaderVisible = false;
-            }
+            //if (scrollYPosition >= _headerToggleYPosition)
+            //{
+            //    //指定位置までスクロールアップしたら,ナビゲーションバーを表示するフラグOn
+            //    _isHeaderVisible = true;
+            //}
+            //else
+            //{
+            //    //スクロールダウンでフラグOff
+            //    _isHeaderVisible = false;
+            //}
+
+            _isHeaderVisible = scrollYPosition >= _headerToggleYPosition;
 
             //指定位置をまたがない場合,アニメーションの必要は無いのでここまで.
             if (_isHeaderVisible == prevIsHeaderVisible)
@@ -68,15 +70,17 @@ namespace XFScrollPosition.Views
                 return;
             }
 
-            //ナビゲーションバーの表示･非表示のアニメーション
-            if (_isHeaderVisible)
-            {
-                await frame_Header.FadeTo(1.0, _animateLength);
-            }
-            else
-            {
-                await frame_Header.FadeTo(0, _animateLength);
-            }
+            ////ナビゲーションバーの表示･非表示のアニメーション
+            //if (_isHeaderVisible)
+            //{
+            //    await frame_Header.FadeTo(1.0, _animateLength);
+            //}
+            //else
+            //{
+            //    await frame_Header.FadeTo(0, _animateLength);
+            //}
+
+            var result=_isHeaderVisible ? (await frame_Header.FadeTo(1.0, _animateLength)) : (await frame_Header.FadeTo(0, _animateLength));
         }
     }
 }
