@@ -46,10 +46,11 @@ namespace XFScrollPosition.Views
                   {
                       double scale = imageFrame.Scale - x.ScaleDelta;
 
-                      if (scale < 0.5)
-                      {
-                          scale = 0.5;
-                      }
+                      //if (scale < 0.5)
+                      //{
+                      //    scale = 0.5;
+                      //}
+                      scale = Math.Max(0.5, scale);
                       await imageFrame.ScaleTo(scale, _animateLength);
 
                       Message = $"up {imageFrame.Width.ToString()}";
@@ -59,7 +60,7 @@ namespace XFScrollPosition.Views
             down.Zip(down.Skip(1),
                 (prev, current) => new
                 {
-                    ScaleDelta = (current.EventArgs.ScrollY - prev.EventArgs.ScrollY) /15,
+                    ScaleDelta = (current.EventArgs.ScrollY - prev.EventArgs.ScrollY) / 15,
                     CurrentY = current.EventArgs.ScrollY,
                     Direction = (current.EventArgs.ScrollY - prev.EventArgs.ScrollY) >= 0 ? ScrollDirection.Up : ScrollDirection.Down
                 })
@@ -67,15 +68,17 @@ namespace XFScrollPosition.Views
                 .Subscribe(async x =>
                 {
                     double scale = imageFrame.Scale - x.ScaleDelta;
-                    if (scale > 1.0)
-                    {
-                        scale = 1.0;
-                    }
+                    //if (scale > 1.0)
+                    //{
+                    //    scale = 1.0;
+                    //}
+                    scale = Math.Min(1.0, scale);
                     if (x.CurrentY == 0)
                     {
                         scale = 1.0;
                     }
-                    await imageFrame.ScaleTo(scale, _animateLength,Easing.CubicOut);
+
+                    await imageFrame.ScaleTo(scale, _animateLength, Easing.CubicOut);
                     Message = $"down {scale.ToString()}";
                 });
         }
