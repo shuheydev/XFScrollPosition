@@ -47,10 +47,11 @@ namespace XFScrollPosition.Views
                 .Subscribe(x =>
                 {
                     double nextTransY = frame_Header.TranslationY - x.DeltaY;
-                    if (nextTransY < -(frame_Header.Height + frame_Header.Y))
-                    {
-                        nextTransY = -(frame_Header.Height + frame_Header.Y);
-                    }
+                    //if (nextTransY < -(frame_Header.Height + frame_Header.Y))
+                    //{
+                    //    nextTransY = -(frame_Header.Height + frame_Header.Y);
+                    //}
+                    nextTransY = Math.Max(-(frame_Header.Height + frame_Header.Y), nextTransY);
                     frame_Header.TranslationY = nextTransY;
 
                     Message = $"{frame_Header.TranslationY} {x.Direction}";
@@ -64,10 +65,11 @@ namespace XFScrollPosition.Views
                 .Subscribe(x =>
                 {
                     double nextTransY = frame_Header.TranslationY - x.DeltaY;
-                    if (nextTransY > 0)
-                    {
-                        nextTransY = 0;
-                    }
+                    //if (nextTransY > 0)
+                    //{
+                    //    nextTransY = 0;
+                    //}
+                    nextTransY = Math.Min(0, nextTransY);
                     frame_Header.TranslationY = nextTransY;
 
                     Message = $"{frame_Header.TranslationY} {x.Direction}";
