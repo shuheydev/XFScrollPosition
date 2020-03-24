@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XFScrollPosition.Views.StickyHeader"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ItemTemplateStyle" TargetType="StackLayout">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup>
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="Pink" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Unselected" />
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <AbsoluteLayout>
+        <AbsoluteLayout
+            x:Name="ImageLayout"
+            d:BackgroundColor="LightBlue"
+            AbsoluteLayout.LayoutBounds="0,0,1,350"
+            AbsoluteLayout.LayoutFlags="WidthProportional">
+
+            <Image
+                x:Name="Picture"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                Aspect="AspectFill"
+                Source="avatar_men_1" />
+
+            <BoxView
+                x:Name="ImageOverlay"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                Opacity="0"
+                Color="Purple" />
+        </AbsoluteLayout>
+
+        <ScrollView
+            x:Name="RootScrollView"
+            d:BackgroundColor="LightGreen"
+            d:Opacity="0.5"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            Scrolled="OnRootScrollViewScrolled">
+            <AbsoluteLayout>
+                <StackLayout
+                    x:Name="EmptyLayout"
+                    Padding="10,15"
+                    AbsoluteLayout.LayoutBounds="0,0,1,350"
+                    AbsoluteLayout.LayoutFlags="WidthProportional"
+                    InputTransparent="True"
+                    Spacing="0">
+                    <Label
+                        x:Name="Name"
+                        FontAttributes="Bold"
+                        FontSize="24"
+                        Text="MyName2"
+                        TextColor="Blue"
+                        VerticalOptions="EndAndExpand" />
+                    <Label
+                        x:Name="Role"
+                        FontSize="20"
+                        Text="MyRole"
+                        TextColor="Blue" />
+                </StackLayout>
+
+                <StackLayout
+                    AbsoluteLayout.LayoutBounds="0,400,1,AutoSize"
+                    AbsoluteLayout.LayoutFlags="WidthProportional"
+                    BackgroundColor="White">
+                    <BindableLayout.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>a</x:String>
+                            <x:String>b</x:String>
+                            <x:String>c</x:String>
+                            <x:String>d</x:String>
+                            <x:String>e</x:String>
+                            <x:String>f</x:String>
+                        </x:Array>
+                    </BindableLayout.ItemsSource>
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Style="{StaticResource ItemTemplateStyle}">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                </StackLayout.GestureRecognizers>
+                                <Label InputTransparent="True" Text="{Binding .}" />
+                                <Image InputTransparent="True" Source="avatar_men_1" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+
+                <!--  Sticky Header部分  -->
+                <Frame
+                    x:Name="TabsLayout"
+                    Padding="0"
+                    AbsoluteLayout.LayoutBounds="0,350,1,50"
+                    AbsoluteLayout.LayoutFlags="WidthProportional"
+                    CornerRadius="0"
+                    HasShadow="True">
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="ヘッダー"
+                        VerticalOptions="Center" />
+                </Frame>
+            </AbsoluteLayout>
+        </ScrollView>
+    </AbsoluteLayout>
+</ContentPage>
